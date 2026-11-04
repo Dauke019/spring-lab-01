@@ -1,6 +1,19 @@
 spring:
   application:
     name: spring-lab
+  # lab 6: a file database, so that a restart keeps the schema and Flyway's history
+  datasource:
+    url: jdbc:h2:file:./data/txlab;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
 
 server:
   port: 8080
@@ -20,6 +33,8 @@ app:
 logging:
   level:
     kz.iitu: INFO
+    org.flywaydb: INFO
+    org.springframework.orm.jpa.JpaTransactionManager: DEBUG
 
 management:
   endpoints:
