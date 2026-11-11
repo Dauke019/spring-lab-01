@@ -5,6 +5,7 @@ import kz.iitu.springlab.catalog.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,5 +39,13 @@ public class BookPageController {
         redirect.addFlashAttribute("message",
                 "Book «" + saved.title() + "» has been added");
         return "redirect:/books"; // 302; the browser performs a GET
+    }
+
+    // lab 10: delete from the page; URL rule POST /books/** -> ADMIN, and BookService.delete has @PreAuthorize
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable long id, RedirectAttributes redirect) {
+        redirect.addFlashAttribute("message",
+                service.delete(id) ? "Book #" + id + " has been deleted" : "Book #" + id + " not found");
+        return "redirect:/books";
     }
 }

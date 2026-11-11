@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Lab</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<div th:replace="~{fragments :: userbar}"></div>
+<h1>Spring Lab</h1>
+<p sec:authorize="isAnonymous()">You are not signed in. The catalogue asks who you are.</p>
+<p><a th:href="@{/books}">Open the catalogue</a></p>
+<p sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin}">Administration: users and roles</a></p>
+</body>
+</html>

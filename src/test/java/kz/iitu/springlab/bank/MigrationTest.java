@@ -24,7 +24,7 @@ class MigrationTest {
         history.forEach(row -> System.out.println(">>> " + row));
 
         // the first row is Flyway's own "<< Flyway Schema History table created >>", it has no version
-        assertThat(history).extracting(row -> row.get("version")).containsExactly(null, "1", "2", "3", "4");
+        assertThat(history).extracting(row -> row.get("version")).containsExactly(null, "1", "2", "3", "4", "5");
         assertThat(history).allMatch(row -> Boolean.TRUE.equals(row.get("success")));
     }
 

@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,17 +29,20 @@ public class BookService {
         return repository.findById(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public Book create(Book book) {
         // the client must not choose the identifier: it is always generated
         return repository.save(new Book(null, book.title(), book.author(), book.year()));
     }
 
     /** Replaces the record with the given id; empty if there is no such record. */
+    @PreAuthorize("hasRole('ADMIN')")
     public Optional<Book> replace(long id, Book book) {
         return repository.findById(id)
                 .map(existing -> repository.save(new Book(id, book.title(), book.author(), book.year())));
     }
 
+    @PreAuthorize("hasRole('ADMIN')") // lab 10, task 3.2
     public boolean delete(long id) {
         return repository.deleteById(id);
     }

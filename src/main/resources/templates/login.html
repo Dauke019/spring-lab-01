@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<div class="login">
+    <h1>Sign in</h1>
+    <!-- variant 1: one message for a wrong name and a wrong password, so the page does not tell which names exist -->
+    <p th:if="${param.error}" class="error">Invalid username or password.</p>
+    <p th:if="${param.logout}" class="flash">You have been signed out.</p>
+    <!-- th:action makes Thymeleaf add the hidden _csrf field -->
+    <form th:action="@{/login}" method="post" class="stack">
+        <label>Username <input name="username" autocomplete="username" required autofocus></label>
+        <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">Sign in</button>
+    </form>
+    <p class="hint"><a th:href="@{/}">Back to the start page</a></p>
+</div>
+</body>
+</html>

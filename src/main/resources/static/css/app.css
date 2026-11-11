@@ -33,3 +33,17 @@ tr:nth-child(even) td { background: #eef2f8; }
 
 form { margin-top: 0.5rem; display: flex; gap: 0.5rem; }
 input, button { padding: 0.4rem 0.6rem; }
+
+/* lab 10 */
+.userbar { display: flex; gap: 1rem; align-items: center; background: #fff; border: 1px solid #c8cfdb;
+           padding: 0.5rem 1rem; border-radius: 6px; margin-bottom: 1rem; }
+.userbar .spacer { flex: 1; }
+.userbar .roles { color: #666; font-size: 0.9em; }
+form.inline { display: inline; margin: 0; }
+.login { max-width: 22rem; margin: 3rem auto; background: #fff; border: 1px solid #c8cfdb;
+         border-radius: 8px; padding: 1.5rem 2rem; }
+form.stack { flex-direction: column; }
+form.stack label { display: flex; flex-direction: column; gap: 0.25rem; }
+.error { background: #fde8e8; border: 1px solid #e08585; padding: 0.6rem 1rem; border-radius: 6px; }
+.hint { font-size: 0.9em; }
+code { font-size: 0.9em; }
